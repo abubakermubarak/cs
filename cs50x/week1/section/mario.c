@@ -6,7 +6,13 @@ void print_row(int bricks);
 int main(void)
 {
     // Prompt user for height (int)
-    int height = get_int("height: ");
+    int height;
+    //Make sure to get postive input
+    do
+    {
+        height = get_int("height: ");
+    } while (height < 1);
+    
     // Print pyramid of that height
     for (int i = 1; i <= height; i++)
     {
