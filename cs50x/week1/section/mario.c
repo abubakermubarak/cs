@@ -8,7 +8,7 @@ int main(void)
     // Prompt user for height (int)
     int height = get_int("height: ");
     // Print pyramid of that height
-    for (int i = 0; i < height; i++)
+    for (int i = 1; i <= height; i++)
     {
         print_row(i);
     }
