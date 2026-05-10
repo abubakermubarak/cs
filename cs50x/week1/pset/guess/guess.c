@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+int rand_int(int min, int max);
+
 int main(void)
 {
     /*The program will give us the same result each time
@@ -10,6 +12,12 @@ int main(void)
     * we will used srand
     */
     //Generate random numbers
+    int random = rand_int(10, 20);
+    printf("random number: %i\n", random);
+}
+int rand_int(int min, int max)
+{
+    srand(time(NULL));
     int random = rand();
-    printf("random number: %i\n", random);    
+    return random % (max - min + 1) + min;
 }
