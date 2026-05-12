@@ -12,12 +12,26 @@ int main(void)
     * we will used srand
     */
     //Generate random numbers
-    int random = rand_int(10, 20);
-    printf("random number: %i\n", random);
+    int random = rand_int(1, 100);
+    //Prompt user to enter a guess
+    int guess = get_int("Enter your guess: ");
+    //Compare guess with the random number
+    if (guess > random)
+    {
+        printf("Too high! Try again\n");
+    }
+    else if (guess < random)
+    {
+        printf("Too low! Try again\n");
+    }
+    else
+    {
+        printf("Correct!\n");
+    }
 }
-int rand_int(int min, int max)
+// Random integer in range [min, max]
+int rand_int(int min, int max) 
 {
     srand(time(NULL));
-    int random = rand();
-    return random % (max - min + 1) + min;
+    return (rand() % (max - min + 1)) + min;
 }
