@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+//Prototypes
+int checkGuess(int guess, int number);
 int rand_int(int min, int max);
 
 int main(void)
@@ -29,9 +30,22 @@ int main(void)
         printf("Correct!\n");
     }
 }
-// Random integer in range [min, max]
+//Random integer in range [min, max]
 int rand_int(int min, int max) 
 {
     srand(time(NULL));
     return (rand() % (max - min + 1)) + min;
+}
+//Compare two int's and return int corpond to each case
+int checkGuess(int guess, int number)
+{
+    if (guess > number)
+    {
+        return 1;
+    }
+    else if (guess < number)
+    {
+        return -1;
+    }
+    return 0;
 }
