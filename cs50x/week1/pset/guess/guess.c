@@ -16,19 +16,27 @@ int main(void)
     int random = rand_int(1, 100);
     //Prompt user to enter a guess
     int guess = get_int("Enter your guess: ");
-    //Compare guess with the random number
-    if (guess > random)
+    int status = checkGuess(guess, random);
+
+    while (status)
     {
-        printf("Too high! Try again\n");
+        //Compare guess with the random number
+        if (guess > random)
+        {
+            printf("Too high! Try again\n");
+            guess = get_int("Enter your guess: ");
+        }
+        else if (guess < random)
+        {
+            printf("Too low! Try again\n");
+            guess = get_int("Enter your guess: ");
+        }
+        else
+        {
+            break;
+        }
     }
-    else if (guess < random)
-    {
-        printf("Too low! Try again\n");
-    }
-    else
-    {
-        printf("Correct!\n");
-    }
+    printf("Correct!\n");
 }
 //Random integer in range [min, max]
 int rand_int(int min, int max) 
