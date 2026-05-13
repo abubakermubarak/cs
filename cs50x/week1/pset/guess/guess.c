@@ -23,16 +23,19 @@ int main(void)
 
     while (status)
     {
+        
         //Compare guess with the random number
         if (guess > random)
         {
             printf("Too high! Try again\n");
+            printf("Attempts remaining: %i\n", ALLOWED_ATTEMPTS - attempts);
             guess = get_int("Enter your guess: ");
             attempts++;
         }
         else if (guess < random)
         {
             printf("Too low! Try again\n");
+            printf("Attempts remaining: %i\n", ALLOWED_ATTEMPTS - attempts);
             guess = get_int("Enter your guess: ");
             attempts++;
         }
