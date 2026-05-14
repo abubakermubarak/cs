@@ -4,7 +4,7 @@
 #include <time.h>
 //Macros
 #define  ALLOWED_ATTEMPTS 7
-#define  DIFFICULTY 50
+
 //Prototypes
 int checkGuess(int guess, int number);
 int chooseDifficulty(void);
@@ -12,10 +12,12 @@ int rand_int(int min, int max);
 
 int main(void)
 {
-    //Generate random numbers
-    int random = rand_int(1, 100);
     //Prompt user to choose difficulty
-    int choice = chooseDifficulty();
+    int max = chooseDifficulty();   
+    //Generate random numbers
+    int random = rand_int(1, max);
+    //Intialize win status if won1 otherwise 0
+    int won = 0;
     //Prompt user to enter a guess
     int guess = get_int("Enter your guess: ");
     int attempts = 1;
@@ -41,6 +43,7 @@ int main(void)
         }
         else
         {
+            won = 1;
             break;
         }
     }
@@ -68,10 +71,21 @@ int checkGuess(int guess, int number)
 //Prompt user to chooses level of defcaulty
 int chooseDifficulty(void)
 {
-    int level;
+    int level, max;
     do
     {
         level = get_int("Choose Difficulty:\n1. Easy   (1 - 50)\n2. Medium (1 - 100)\n3. Hard   (1 - 500)\n\nEnter choice: ");
     } while (level < 1 || level > 3);
-    return level;
+    if (level == 1)
+    {
+        return 50;
+    }
+    else if(level == 2)
+    {
+        return 100;
+    }
+    else
+    {
+        return 500;
+    }
 }
