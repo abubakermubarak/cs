@@ -19,11 +19,11 @@ int main(void)
     //Intialize win status if won1 otherwise 0
     int won = 0;
     //Prompt user to enter a guess
-    int guess = get_int("Enter your guess: ");
+    int guess = get_int("\nEnter your guess: ");
     int attempts = 1;
     int status = checkGuess(guess, random);
 
-    while (status)
+    while (status && attempts < ALLOWED_ATTEMPTS)
     {
         
         //Compare guess with the random number
