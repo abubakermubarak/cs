@@ -15,7 +15,7 @@ int main(void)
     //Prompt user to choose difficulty
     int max = chooseDifficulty();   
     //Generate random numbers
-    int random = rand_int(1, max);
+    int random = rand_int(1, 50);
     //Intialize win status if won1 otherwise 0
     int won = 0;
     //Prompt user to enter a guess
@@ -47,7 +47,22 @@ int main(void)
             break;
         }
     }
-    printf("Correct!\n");
+    //Calculate score, if the player lose score is zero
+    //If player guess it from first time score is 100 else use the formula
+    int score;
+    if (won == 0)
+    {
+        score = 0;
+    }
+    else if (attempts == 1)
+    {
+        score = 100;
+    }
+    else
+    {
+        score = 100 - (attempts * 10);
+    }
+    printf("score: %i\nattempts: %i\nstatus: %i\n", score, attempts, won);
 }
 //Random integer in range [min, max]
 int rand_int(int min, int max) 
